@@ -20,7 +20,7 @@ CREATE TABLE alunos(
 
 CREATE TABLE modalidades(
     id BIGSERIAL PRIMARY KEY,
-    nome VARCHAR(100) NOT NULL UNQUE,
+    nome VARCHAR(100) NOT NULL UNIQUE,
     ativa BOOLEAN NOT NULL DEFAULT TRUE
 );
 
@@ -47,7 +47,7 @@ CREATE TABLE matriculas(
     dia_vencimento INTEGER NOT NULL CHECK (dia_vencimento BETWEEN 1 AND 31),
     data_encerramento DATE,
     status VARCHAR(20) NOT NULL DEFAULT 'ATIVA',
-    CHECK (status IN ('ATIVA', 'ENCERRADA', "CANCELADA"))
+    CHECK (status IN ('ATIVA', 'ENCERRADA', 'CANCELADA'))
 );
 
 CREATE TABLE matriculas_modalidades(
