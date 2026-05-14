@@ -28,7 +28,7 @@ public class AlunoService {
         return AlunoResponse.fromEntity(alunoSalvo);
     }
 
-    public Page<AlunoResponse> listar(AlunoRequest request, Pageable pageble){
+    public Page<AlunoResponse> listar(Pageable pageble){
         return alunoRepository.findAll(pageble).map(AlunoResponse::fromEntity);
     }
 
