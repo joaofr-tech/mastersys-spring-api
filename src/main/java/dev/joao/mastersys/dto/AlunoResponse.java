@@ -24,8 +24,8 @@ public record AlunoResponse(
     LocalDateTime atualizadoEm
 ) {
 
-    public AlunoResponse(Aluno aluno) {
-        this(
+    public static AlunoResponse fromEntity(Aluno aluno) {
+        return new AlunoResponse(
             aluno.getId(),
             aluno.getNome(),
             aluno.getDataNascimento(),

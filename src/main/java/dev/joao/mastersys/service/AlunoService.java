@@ -1,0 +1,55 @@
+package dev.joao.mastersys.service;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import dev.joao.mastersys.dto.AlunoRequest;
+import dev.joao.mastersys.dto.AlunoResponse;
+import dev.joao.mastersys.model.Aluno;
+import dev.joao.mastersys.repository.AlunoRepository;
+
+@Service
+public class AlunoService {
+    
+    public final AlunoRepository alunoRepository;
+
+    public AlunoService(AlunoRepository alunoRepository){
+        this.alunoRepository = alunoRepository;
+    }
+
+    public AlunoResponse cadastrar(AlunoRequest request){
+        if (request.email() != null && alunoRepository.existsByEmail(request.email())){
+            throw new RuntimeException("Ja existe um aluno cadastrado com esse email");
+        }
+
+        Aluno aluno = request.toEntity();
+        Aluno alunoSalvo = alunoRepository.save(aluno);
+        return AlunoResponse.fromEntity(alunoSalvo);
+    }
+
+    public Page<AlunoResponse> listar(AlunoRequest request, Pageable pageble){
+        return alunoRepository.findAll(pageble).map(AlunoResponse::fromEntity);
+    }
+
+    public AlunoResponse buscarPorId(Long id){
+        Aluno aluno = buscarEntidadePorId(id);
+        return AlunoResponse.fromEntity(aluno);
+    }
+
+    public AlunoResponse atualizar(Long id, AlunoRequest request){
+        Aluno aluno = buscarEntidadePorId(id);
+        request.preencher(aluno);
+        Aluno alunoAtualizado = alunoRepository.save(aluno);
+        return AlunoResponse.fromEntity(alunoAtualizado);
+    }
+
+    public void excluir(Long id) {
+        Aluno aluno = buscarEntidadePorId(id);
+        alunoRepository.delete(aluno);
+    }
+
+    private Aluno buscarEntidadePorId(Long id){
+        return alunoRepository.findById(id).orElseThrow(() -> new RuntimeException("Aluno nao encontrado"));
+    }
+}
