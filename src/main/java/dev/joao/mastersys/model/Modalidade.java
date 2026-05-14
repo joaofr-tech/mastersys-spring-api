@@ -17,7 +17,7 @@ public class Modalidade {
 
     private String nome;
 
-    private Boolean ativo = true;
+    private Boolean ativa = true;
 
 
     public Long getId() {
@@ -36,16 +36,16 @@ public class Modalidade {
         this.nome = nome;
     }
 
-    public Boolean isAtivo() {
-        return this.ativo;
+    public Boolean isAtiva() {
+        return this.ativa;
     }
 
-    public Boolean getAtivo() {
-        return this.ativo;
+    public Boolean getAtiva() {
+        return this.ativa;
     }
 
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
+    public void setAtiva(Boolean ativa) {
+        this.ativa = ativa;
     }
 
 }

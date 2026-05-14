@@ -37,4 +37,38 @@ public class Assiduidade {
             dataEntrada = LocalDateTime.now();
         }
     }
+
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDateTime getDataEntrada() {
+        return this.dataEntrada;
+    }
+
+    public void setDataEntrada(LocalDateTime dataEntrada) {
+        this.dataEntrada = dataEntrada;
+    }
+
+    public LocalDateTime getDataSaida() {
+        return this.dataSaida;
+    }
+
+    public void setDataSaida(LocalDateTime dataSaida) {
+        this.dataSaida = dataSaida;
+    }
+
+    public Matricula getMatricula() {
+        return this.matricula;
+    }
+
+    public void setMatricula(Matricula matricula) {
+        this.matricula = matricula;
+    }
+
 }

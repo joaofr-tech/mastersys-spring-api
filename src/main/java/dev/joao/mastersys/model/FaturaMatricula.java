@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import org.springframework.cglib.core.Local;
-
 import dev.joao.mastersys.model.enums.StatusFatura;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

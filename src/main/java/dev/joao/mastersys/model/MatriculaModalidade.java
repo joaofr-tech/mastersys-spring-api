@@ -2,7 +2,6 @@ package dev.joao.mastersys.model;
 
 import java.time.LocalDate;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -11,10 +10,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "matricula_modalidade")
+@Table(name = "matriculas_modalidades")
 public class MatriculaModalidade {
     
     @Id
@@ -43,6 +43,7 @@ public class MatriculaModalidade {
     @JoinColumn(name = "plano_id")
     private Plano plano;
 
+    @PrePersist
     public void prePersist(){
         if (dataInicio == null){
             dataInicio = LocalDate.now();

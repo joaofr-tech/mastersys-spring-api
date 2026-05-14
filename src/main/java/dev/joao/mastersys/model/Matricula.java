@@ -30,9 +30,10 @@ public class Matricula {
     @Column(name = "dia_vencimento")
     private Integer diaVencimento;
 
-    @Column(name = "dia_encerramento")
+    @Column(name = "data_encerramento")
     private LocalDate diaEncerramento;
 
+    @Column(name = "status")
     @Enumerated(EnumType.STRING)
     private StatusMatricula statusMatricula = StatusMatricula.ATIVA;
 
